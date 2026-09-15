@@ -1,24 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
-
-<title>RED MP3 Player</title>
-
-<!-- RED MP3 APP ICON -->
-<link rel="icon" type="image/png" href="icon.png">
-
-<!-- PWA -->
-<link rel="manifest" href="manifest.json">
-
-<meta name="theme-color" content="#ff0000">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RED HORIZON MP3 PLAYER</title>
 
 <style>
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -26,46 +13,35 @@
 }
 
 body {
-    background: #030303;
+    background: #050505;
     color: white;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, sans-serif;
     min-height: 100vh;
 }
 
 .player {
     width: 100%;
-    max-width: 520px;
+    max-width: 500px;
     min-height: 100vh;
     margin: auto;
     padding: 20px;
-
     background:
-        radial-gradient(
-            circle at 50% 30%,
-            #3b0000 0%,
-            #160000 25%,
-            #070707 55%,
-            #020202 100%
-        );
+        radial-gradient(circle at center, #351010 0%, #090909 40%, #030303 100%);
 }
-
-/* HEADER */
 
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    border-bottom: 1px solid #700000;
     padding-bottom: 15px;
-    border-bottom: 1px solid #660000;
 }
 
 .logo {
+    color: #ff2020;
     font-size: 22px;
     font-weight: bold;
     letter-spacing: 3px;
-    color: #ff2020;
-    text-shadow: 0 0 10px red;
 }
 
 .status {
@@ -73,1013 +49,540 @@ body {
     font-size: 11px;
 }
 
-/* ALBUM ART */
-
 .art {
     width: 250px;
     height: 250px;
-
     margin: 35px auto 25px;
-
     border-radius: 50%;
-
-    border: 3px solid #ff1111;
-
+    border: 3px solid #ff1515;
     box-shadow:
         0 0 15px #ff0000,
         0 0 40px #770000,
-        inset 0 0 40px #ff0000;
-
+        inset 0 0 35px #ff0000;
     display: flex;
     justify-content: center;
     align-items: center;
-
     background:
-        radial-gradient(
-            circle,
-            #ff2020 0%,
-            #690000 8%,
-            #180000 25%,
-            #050505 55%,
-            #250000 70%,
-            #050505 100%
-        );
+        radial-gradient(circle,
+        #ff2222 0%,
+        #660000 8%,
+        #150000 25%,
+        #050505 55%,
+        #200000 70%,
+        #050505 100%);
 }
 
 .art.playing {
-    animation: rotateDisc 8s linear infinite;
+    animation: spin 8s linear infinite;
 }
 
-@keyframes rotateDisc {
-
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 .disc {
-
     width: 75px;
     height: 75px;
-
     border-radius: 50%;
-
     border: 2px solid #ff3333;
-
     box-shadow: 0 0 20px red;
-
     display: flex;
-    justify-content: center;
     align-items: center;
-
+    justify-content: center;
 }
 
 .disc::after {
-
     content: "";
-
     width: 18px;
     height: 18px;
-
     background: #ff2222;
-
     border-radius: 50%;
-
-    box-shadow: 0 0 15px red;
-
+    box-shadow: 0 0 12px red;
 }
-
-/* SONG INFO */
 
 .song {
     text-align: center;
 }
 
 .song h2 {
-
     font-size: 21px;
-
+    color: white;
     margin-bottom: 8px;
-
-    white-space: nowrap;
-
     overflow: hidden;
-
+    white-space: nowrap;
     text-overflow: ellipsis;
-
 }
 
 .song p {
-
     color: #999;
-
     font-size: 13px;
-
 }
-
-/* TIME */
 
 .time {
-
     display: flex;
-
     justify-content: space-between;
-
-    margin-top: 20px;
-
     color: #aaa;
-
     font-size: 12px;
-
+    margin-top: 20px;
 }
-
-/* RANGE */
 
 input[type="range"] {
-
     width: 100%;
-
     accent-color: red;
-
     cursor: pointer;
-
 }
 
-/* CONTROLS */
-
 .controls {
-
     display: flex;
-
     justify-content: center;
-
     align-items: center;
-
-    gap: 15px;
-
+    gap: 22px;
     margin: 25px 0;
-
 }
 
 .btn {
-
+    border: 1px solid #900000;
+    background: #120000;
+    color: white;
     width: 48px;
     height: 48px;
-
     border-radius: 50%;
-
-    border: 1px solid #850000;
-
-    background: #120000;
-
-    color: white;
-
     font-size: 18px;
-
     cursor: pointer;
-
 }
 
 .btn:active {
-
-    transform: scale(.9);
-
+    transform: scale(.92);
 }
 
 .play {
-
     width: 68px;
     height: 68px;
-
-    background: #d90000;
-
+    background: #e00000;
     border: 2px solid #ff4444;
-
     box-shadow: 0 0 25px red;
-
     font-size: 25px;
-
 }
-
-/* VOLUME */
 
 .volume {
-
     display: flex;
-
-    align-items: center;
-
     gap: 10px;
-
+    align-items: center;
     margin-bottom: 20px;
-
 }
 
-/* SECTIONS */
+.volume span {
+    font-size: 18px;
+}
 
 .section {
-
     border: 1px solid #550000;
-
-    background: rgba(20,0,0,.75);
-
+    background: rgba(20,0,0,.7);
     padding: 15px;
-
     margin-top: 15px;
-
     border-radius: 10px;
-
 }
 
 .section-title {
-
     color: #ff3030;
-
     font-weight: bold;
-
     margin-bottom: 12px;
-
 }
-
-/* BUTTONS */
 
 .file-btn,
 .action {
-
     display: inline-block;
-
     background: #190000;
-
     color: #ff4444;
-
     border: 1px solid #850000;
-
     padding: 10px 12px;
-
     border-radius: 7px;
-
     margin: 4px;
-
     cursor: pointer;
-
     font-size: 13px;
-
 }
 
 .file-btn:hover,
 .action:hover {
-
     background: #400000;
-
 }
 
 input[type="file"] {
-
     display: none;
-
 }
-
-/* SONG LIST */
-
-.song-list {
-
-    max-height: 260px;
-
-    overflow-y: auto;
-
-    margin-top: 10px;
-
-}
-
-.song-item {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
-
-    padding: 11px;
-
-    border-bottom: 1px solid #300000;
-
-    cursor: pointer;
-
-}
-
-.song-item:hover {
-
-    background: #220000;
-
-}
-
-.song-item.active {
-
-    background: #500000;
-
-    color: #ff5555;
-
-}
-
-.number {
-
-    width: 25px;
-
-    color: #777;
-
-}
-
-.song-name {
-
-    flex: 1;
-
-    overflow: hidden;
-
-    white-space: nowrap;
-
-    text-overflow: ellipsis;
-
-}
-
-.empty {
-
-    color: #777;
-
-    text-align: center;
-
-    padding: 20px;
-
-}
-
-/* PLAYLIST */
 
 .playlists {
-
     display: flex;
-
     flex-wrap: wrap;
-
     gap: 7px;
-
     margin-top: 10px;
-
 }
 
 .playlist {
-
     padding: 8px 12px;
-
     border: 1px solid #660000;
-
     border-radius: 20px;
-
     background: #0c0000;
-
     color: #bbb;
-
     cursor: pointer;
-
 }
 
 .playlist.active {
-
     background: #800000;
-
     color: white;
-
     border-color: red;
-
 }
 
-/* FOOTER */
+.song-list {
+    max-height: 250px;
+    overflow-y: auto;
+    margin-top: 10px;
+}
+
+.song-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px;
+    border-bottom: 1px solid #300000;
+    cursor: pointer;
+}
+
+.song-item:hover {
+    background: #220000;
+}
+
+.song-item.active {
+    background: #500000;
+    color: #ff5555;
+}
+
+.number {
+    width: 25px;
+    color: #777;
+}
+
+.song-name {
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.small-delete {
+    color: #ff4444;
+    cursor: pointer;
+}
+
+.empty {
+    color: #777;
+    text-align: center;
+    padding: 20px;
+}
 
 .footer {
-
     text-align: center;
-
     color: #555;
-
     font-size: 10px;
-
     margin-top: 25px;
-
     letter-spacing: 2px;
-
 }
-
 </style>
-
 </head>
-
 
 <body>
 
-
 <div class="player">
 
-    <!-- HEADER -->
-
     <div class="header">
-
-        <div class="logo">
-            RED//MP3
-        </div>
-
-        <div class="status">
-            ● ONLINE
-        </div>
-
+        <div class="logo">RED//MP3</div>
+        <div class="status">● ONLINE</div>
     </div>
-
-
-    <!-- PLAYER ART -->
 
     <div class="art" id="art">
-
         <div class="disc"></div>
-
     </div>
-
-
-    <!-- SONG INFORMATION -->
 
     <div class="song">
-
-        <h2 id="title">
-            NO SONG SELECTED
-        </h2>
-
-        <p id="artist">
-            ADD MP3 MUSIC
-        </p>
-
+        <h2 id="title">NO SONG SELECTED</h2>
+        <p id="artist">ADD MP3 MUSIC</p>
     </div>
-
-
-    <!-- TIME -->
 
     <div class="time">
-
-        <span id="currentTime">
-            00:00
-        </span>
-
-        <span id="duration">
-            00:00
-        </span>
-
+        <span id="currentTime">00:00</span>
+        <span id="duration">00:00</span>
     </div>
 
-
-    <!-- PROGRESS -->
-
-    <input
-        type="range"
-        id="progress"
-        min="0"
-        max="100"
-        value="0"
-    >
-
-
-    <!-- CONTROLS -->
+    <input type="range" id="progress" min="0" max="100" value="0">
 
     <div class="controls">
-
-        <button
-            class="btn"
-            id="shuffleBtn">
-            🔀
-        </button>
-
-        <button
-            class="btn"
-            id="prevBtn">
-            ⏮
-        </button>
-
-        <button
-            class="btn play"
-            id="playBtn">
-            ▶
-        </button>
-
-        <button
-            class="btn"
-            id="nextBtn">
-            ⏭
-        </button>
-
-        <button
-            class="btn"
-            id="repeatBtn">
-            🔁
-        </button>
-
+        <button class="btn" id="shuffleBtn">🔀</button>
+        <button class="btn" id="prevBtn">⏮</button>
+        <button class="btn play" id="playBtn">▶</button>
+        <button class="btn" id="nextBtn">⏭</button>
+        <button class="btn" id="repeatBtn">🔁</button>
     </div>
-
-
-    <!-- VOLUME -->
 
     <div class="volume">
-
-        <span>
-            🔊
-        </span>
-
-        <input
-            type="range"
-            id="volume"
-            min="0"
-            max="1"
-            step="0.01"
-            value="1"
-        >
-
+        <span>🔊</span>
+        <input type="range" id="volume" min="0" max="1" step="0.01" value="1">
     </div>
-
-
-    <!-- AUDIO ENGINE -->
 
     <audio id="audio"></audio>
 
-
-    <!-- MUSIC LIBRARY -->
-
+    <!-- MUSIC -->
     <div class="section">
 
-        <div class="section-title">
-            MUSIC LIBRARY
-        </div>
-
+        <div class="section-title">MUSIC LIBRARY</div>
 
         <label class="file-btn">
-
             ＋ ADD MP3 SONGS
-
-            <input
-                type="file"
-                id="fileInput"
-                accept=".mp3,audio/mpeg"
-                multiple
-            >
-
+            <input type="file" id="fileInput" accept="audio/mpeg,audio/mp3,.mp3" multiple>
         </label>
 
-
-        <div
-            id="songList"
-            class="song-list">
-
-            <div class="empty">
-                No songs added
-            </div>
-
+        <div id="songList" class="song-list">
+            <div class="empty">No songs added</div>
         </div>
 
     </div>
-
 
     <!-- PLAYLIST -->
-
     <div class="section">
 
-        <div class="section-title">
-            PLAYLISTS
-        </div>
+        <div class="section-title">PLAYLISTS</div>
 
-
-        <button
-            class="action"
-            id="newPlaylist">
-
+        <button class="action" id="newPlaylist">
             ＋ NEW PLAYLIST
-
         </button>
 
-
-        <button
-            class="action"
-            id="deletePlaylist">
-
+        <button class="action" id="deletePlaylist">
             🗑 DELETE
-
         </button>
 
-
-        <div
-            id="playlists"
-            class="playlists">
-
-        </div>
+        <div id="playlists" class="playlists"></div>
 
     </div>
 
-
-    <!-- TOOLS -->
-
+    <!-- ACTIONS -->
     <div class="section">
 
-        <div class="section-title">
-            TOOLS
-        </div>
+        <div class="section-title">TOOLS</div>
 
-
-        <button
-            class="action"
-            id="addToPlaylist">
-
+        <button class="action" id="addToPlaylist">
             ＋ ADD TO PLAYLIST
-
         </button>
 
-
-        <button
-            class="action"
-            id="exportBtn">
-
+        <button class="action" id="exportBtn">
             💾 EXPORT
-
         </button>
-
 
         <label class="action">
-
             📥 IMPORT
-
-            <input
-                type="file"
-                id="importInput"
-                accept=".json"
-            >
-
+            <input type="file" id="importInput" accept=".json">
         </label>
 
     </div>
 
-
     <div class="footer">
-
         RED//MP3 PLAYER
-
     </div>
 
 </div>
 
-
 <script>
 
-
-/* =========================
-   VARIABLES
-========================= */
-
 let songs = [];
-
 let currentIndex = -1;
-
 let currentPlaylist = "All Songs";
-
+let repeat = false;
 let shuffle = false;
 
-let repeat = false;
-
-
 let playlists = {
-
     "All Songs": []
-
 };
 
-
-const audio =
-    document.getElementById("audio");
-
-const title =
-    document.getElementById("title");
-
-const artist =
-    document.getElementById("artist");
-
-const playBtn =
-    document.getElementById("playBtn");
-
-const progress =
-    document.getElementById("progress");
-
-const volume =
-    document.getElementById("volume");
-
-const songList =
-    document.getElementById("songList");
-
-const playlistsBox =
-    document.getElementById("playlists");
-
-const art =
-    document.getElementById("art");
-
-const currentTime =
-    document.getElementById("currentTime");
-
-const duration =
-    document.getElementById("duration");
+const audio = document.getElementById("audio");
+const title = document.getElementById("title");
+const artist = document.getElementById("artist");
+const playBtn = document.getElementById("playBtn");
+const progress = document.getElementById("progress");
+const volume = document.getElementById("volume");
+const songList = document.getElementById("songList");
+const playlistsBox = document.getElementById("playlists");
+const art = document.getElementById("art");
+const currentTime = document.getElementById("currentTime");
+const duration = document.getElementById("duration");
 
 
-/* =========================
-   TIME
-========================= */
+// ===============================
+// FORMAT TIME
+// ===============================
 
 function formatTime(seconds) {
 
     if (!isFinite(seconds)) {
-
         return "00:00";
-
     }
 
-    let minutes =
-        Math.floor(seconds / 60);
+    let min = Math.floor(seconds / 60);
+    let sec = Math.floor(seconds % 60);
 
-    let seconds2 =
-        Math.floor(seconds % 60);
-
-    return String(minutes).padStart(2, "0")
-        + ":" +
-        String(seconds2).padStart(2, "0");
-
+    return String(min).padStart(2, "0") + ":" +
+           String(sec).padStart(2, "0");
 }
 
 
-/* =========================
-   ADD SONGS
-========================= */
+// ===============================
+// ADD SONGS
+// ===============================
 
-document
-.getElementById("fileInput")
-.addEventListener("change", function() {
+document.getElementById("fileInput").addEventListener("change", function() {
 
+    const files = Array.from(this.files);
 
-    const files =
-        Array.from(this.files);
+    files.forEach(file => {
 
-
-    files.forEach(function(file) {
-
-
-        if (
-            !file.name
-            .toLowerCase()
-            .endsWith(".mp3")
-        ) {
-
+        if (!file.type.startsWith("audio/") &&
+            !file.name.toLowerCase().endsWith(".mp3")) {
             return;
-
         }
 
-
-        const url =
-            URL.createObjectURL(file);
-
+        const url = URL.createObjectURL(file);
 
         songs.push({
-
-            id:
-                Date.now()
-                + Math.random(),
-
-            name:
-                file.name,
-
-            file:
-                file,
-
-            url:
-                url
-
+            id: Date.now() + Math.random(),
+            name: file.name,
+            file: file,
+            url: url
         });
 
-
-        playlists["All Songs"]
-        .push(songs.length - 1);
-
-
+        playlists["All Songs"].push(songs.length - 1);
     });
-
 
     renderSongs();
 
-
     this.value = "";
-
 
 });
 
 
-/* =========================
-   DISPLAY SONGS
-========================= */
+// ===============================
+// RENDER SONGS
+// ===============================
 
 function renderSongs() {
 
-
     songList.innerHTML = "";
 
+    let indexes = [];
 
-    let indexes;
+    if (currentPlaylist === "All Songs") {
 
-
-    if (
-        currentPlaylist ===
-        "All Songs"
-    ) {
-
-        indexes =
-            playlists["All Songs"];
+        indexes = playlists["All Songs"];
 
     } else {
 
-        indexes =
-            playlists[currentPlaylist] || [];
+        indexes = playlists[currentPlaylist] || [];
 
     }
 
-
-    if (
-        indexes.length === 0
-    ) {
+    if (indexes.length === 0) {
 
         songList.innerHTML =
-            '<div class="empty">' +
-            'No songs in this playlist' +
-            '</div>';
+            '<div class="empty">No songs in this playlist</div>';
 
         return;
-
     }
 
+    indexes.forEach((songIndex, position) => {
 
-    indexes.forEach(
-        function(songIndex, position) {
+        const song = songs[songIndex];
 
+        if (!song) return;
 
-            const song =
-                songs[songIndex];
+        const item = document.createElement("div");
 
+        item.className = "song-item";
 
-            if (!song) return;
-
-
-            const item =
-                document.createElement("div");
-
-
-            item.className =
-                "song-item";
-
-
-            if (
-                songIndex ===
-                currentIndex
-            ) {
-
-                item.classList.add(
-                    "active"
-                );
-
-            }
-
-
-            item.innerHTML =
-
-                '<div class="number">'
-                + (position + 1)
-                + '</div>'
-
-                +
-
-                '<div class="song-name">'
-                + escapeHTML(song.name)
-                + '</div>'
-
-                +
-
-                '<div>▶</div>';
-
-
-            item.onclick =
-                function() {
-
-                    playSong(songIndex);
-
-                };
-
-
-            songList.appendChild(item);
-
-
+        if (songIndex === currentIndex) {
+            item.classList.add("active");
         }
-    );
 
+        item.innerHTML = `
+            <div class="number">${position + 1}</div>
+            <div class="song-name">${escapeHTML(song.name)}</div>
+            <div>▶</div>
+        `;
 
+        item.onclick = function() {
+            playSong(songIndex);
+        };
+
+        songList.appendChild(item);
+
+    });
 }
 
 
-/* =========================
-   ESCAPE
-========================= */
+// ===============================
+// SECURITY
+// ===============================
 
 function escapeHTML(text) {
 
+    const div = document.createElement("div");
 
-    const div =
-        document.createElement("div");
-
-
-    div.textContent =
-        text;
-
+    div.textContent = text;
 
     return div.innerHTML;
-
 }
 
 
-/* =========================
-   PLAY SONG
-========================= */
+// ===============================
+// PLAY SONG
+// ===============================
 
 function playSong(index) {
 
+    if (!songs[index]) return;
 
-    if (!songs[index]) {
+    currentIndex = index;
 
-        return;
+    const song = songs[index];
 
-    }
-
-
-    currentIndex =
-        index;
-
-
-    const song =
-        songs[index];
-
-
-    audio.src =
-        song.url;
-
+    audio.src = song.url;
 
     title.textContent =
-        song.name
-        .replace(/\.[^/.]+$/, "");
+        song.name.replace(/\.[^/.]+$/, "");
 
-
-    artist.textContent =
-        "LOCAL MP3";
-
+    artist.textContent = "LOCAL MUSIC";
 
     audio.play()
-    .then(function() {
+        .then(() => {
 
-        playBtn.textContent =
-            "⏸";
+            playBtn.textContent = "⏸";
 
-        art.classList.add(
-            "playing"
-        );
+            art.classList.add("playing");
 
-    })
-    .catch(function() {
+        })
+        .catch(() => {
 
-        alert(
-            "Could not play this MP3."
-        );
+            alert("Unable to play this file. Please use an MP3 file.");
 
-    });
-
+        });
 
     renderSongs();
-
 }
 
 
-/* =========================
-   PLAY / PAUSE
-========================= */
+// ===============================
+// PLAY / PAUSE
+// ===============================
 
-playBtn.onclick =
-function() {
-
+playBtn.onclick = function() {
 
     if (!audio.src) {
-
 
         if (songs.length > 0) {
 
@@ -1087,407 +590,218 @@ function() {
 
         } else {
 
-            alert(
-                "Please add an MP3 song first."
-            );
+            alert("First add an MP3 song.");
 
         }
 
-
         return;
-
     }
-
 
     if (audio.paused) {
 
-
         audio.play();
 
+        playBtn.textContent = "⏸";
 
-        playBtn.textContent =
-            "⏸";
-
-
-        art.classList.add(
-            "playing"
-        );
-
+        art.classList.add("playing");
 
     } else {
 
-
         audio.pause();
 
+        playBtn.textContent = "▶";
 
-        playBtn.textContent =
-            "▶";
-
-
-        art.classList.remove(
-            "playing"
-        );
-
+        art.classList.remove("playing");
 
     }
 
 };
 
 
-/* =========================
-   NEXT
-========================= */
+// ===============================
+// NEXT
+// ===============================
 
-document
-.getElementById("nextBtn")
-.onclick =
-function() {
+document.getElementById("nextBtn").onclick = function() {
 
+    if (songs.length === 0) return;
 
-    if (songs.length === 0) {
+    let list =
+        currentPlaylist === "All Songs"
+        ? playlists["All Songs"]
+        : playlists[currentPlaylist] || [];
 
-        return;
+    if (list.length === 0) return;
 
-    }
-
-
-    let list;
-
-
-    if (
-        currentPlaylist ===
-        "All Songs"
-    ) {
-
-        list =
-            playlists["All Songs"];
-
-    } else {
-
-        list =
-            playlists[currentPlaylist]
-            || [];
-
-    }
-
-
-    if (list.length === 0) {
-
-        return;
-
-    }
-
-
-    let position =
-        list.indexOf(currentIndex);
-
+    let position = list.indexOf(currentIndex);
 
     let nextPosition;
 
-
     if (shuffle) {
 
-
         nextPosition =
-            Math.floor(
-                Math.random()
-                * list.length
-            );
-
+            Math.floor(Math.random() * list.length);
 
     } else {
 
+        nextPosition = position + 1;
 
-        nextPosition =
-            position + 1;
-
-
-        if (
-            nextPosition >=
-            list.length
-        ) {
-
+        if (nextPosition >= list.length) {
             nextPosition = 0;
-
         }
 
     }
 
-
-    playSong(
-        list[nextPosition]
-    );
+    playSong(list[nextPosition]);
 
 };
 
 
-/* =========================
-   PREVIOUS
-========================= */
+// ===============================
+// PREVIOUS
+// ===============================
 
-document
-.getElementById("prevBtn")
-.onclick =
-function() {
+document.getElementById("prevBtn").onclick = function() {
 
+    if (songs.length === 0) return;
 
-    if (songs.length === 0) {
+    let list =
+        currentPlaylist === "All Songs"
+        ? playlists["All Songs"]
+        : playlists[currentPlaylist] || [];
 
-        return;
+    if (list.length === 0) return;
 
-    }
-
-
-    let list;
-
-
-    if (
-        currentPlaylist ===
-        "All Songs"
-    ) {
-
-        list =
-            playlists["All Songs"];
-
-    } else {
-
-        list =
-            playlists[currentPlaylist]
-            || [];
-
-    }
-
-
-    if (list.length === 0) {
-
-        return;
-
-    }
-
-
-    let position =
-        list.indexOf(currentIndex);
-
+    let position = list.indexOf(currentIndex);
 
     position--;
 
-
     if (position < 0) {
-
-        position =
-            list.length - 1;
-
+        position = list.length - 1;
     }
 
-
-    playSong(
-        list[position]
-    );
+    playSong(list[position]);
 
 };
 
 
-/* =========================
-   SONG FINISHED
-========================= */
+// ===============================
+// AUDIO ENDED
+// ===============================
 
-audio.addEventListener(
-"ended",
-function() {
-
+audio.addEventListener("ended", function() {
 
     if (repeat) {
-
 
         audio.currentTime = 0;
 
         audio.play();
 
-
     } else {
 
-
-        document
-        .getElementById("nextBtn")
-        .click();
-
+        document.getElementById("nextBtn").click();
 
     }
 
 });
 
 
-/* =========================
-   PROGRESS
-========================= */
+// ===============================
+// PROGRESS
+// ===============================
 
-audio.addEventListener(
-"timeupdate",
-function() {
+audio.addEventListener("timeupdate", function() {
 
-
-    if (!audio.duration) {
-
-        return;
-
-    }
-
+    if (!audio.duration) return;
 
     progress.value =
-        (audio.currentTime
-        / audio.duration)
-        * 100;
-
+        (audio.currentTime / audio.duration) * 100;
 
     currentTime.textContent =
-        formatTime(
-            audio.currentTime
-        );
+        formatTime(audio.currentTime);
 
 });
 
-
-audio.addEventListener(
-"loadedmetadata",
-function() {
-
+audio.addEventListener("loadedmetadata", function() {
 
     duration.textContent =
-        formatTime(
-            audio.duration
-        );
+        formatTime(audio.duration);
 
 });
 
+progress.oninput = function() {
 
-progress.oninput =
-function() {
-
-
-    if (!audio.duration) {
-
-        return;
-
-    }
-
+    if (!audio.duration) return;
 
     audio.currentTime =
-        (progress.value / 100)
-        * audio.duration;
+        (progress.value / 100) * audio.duration;
 
 };
 
 
-/* =========================
-   VOLUME
-========================= */
+// ===============================
+// VOLUME
+// ===============================
 
-volume.oninput =
-function() {
+volume.oninput = function() {
 
-    audio.volume =
-        volume.value;
+    audio.volume = volume.value;
 
 };
 
 
-/* =========================
-   SHUFFLE
-========================= */
+// ===============================
+// SHUFFLE
+// ===============================
 
-document
-.getElementById("shuffleBtn")
-.onclick =
-function() {
+document.getElementById("shuffleBtn").onclick = function() {
 
-
-    shuffle =
-        !shuffle;
-
+    shuffle = !shuffle;
 
     this.style.background =
-        shuffle
-        ? "#800000"
-        : "#120000";
+        shuffle ? "#800000" : "#120000";
 
 };
 
 
-/* =========================
-   REPEAT
-========================= */
+// ===============================
+// REPEAT
+// ===============================
 
-document
-.getElementById("repeatBtn")
-.onclick =
-function() {
+document.getElementById("repeatBtn").onclick = function() {
 
-
-    repeat =
-        !repeat;
-
+    repeat = !repeat;
 
     this.style.background =
-        repeat
-        ? "#800000"
-        : "#120000";
+        repeat ? "#800000" : "#120000";
 
 };
 
 
-/* =========================
-   NEW PLAYLIST
-========================= */
+// ===============================
+// NEW PLAYLIST
+// ===============================
 
-document
-.getElementById("newPlaylist")
-.onclick =
-function() {
+document.getElementById("newPlaylist").onclick = function() {
 
+    const name = prompt("Enter playlist name:");
 
-    const name =
-        prompt(
-            "Enter playlist name:"
-        );
+    if (!name) return;
 
+    const cleanName = name.trim();
 
-    if (!name) {
-
-        return;
-
-    }
-
-
-    const cleanName =
-        name.trim();
-
-
-    if (!cleanName) {
-
-        return;
-
-    }
-
+    if (!cleanName) return;
 
     if (playlists[cleanName]) {
 
-
-        alert(
-            "Playlist already exists."
-        );
-
+        alert("Playlist already exists.");
 
         return;
-
     }
-
 
     playlists[cleanName] = [];
 
-
-    currentPlaylist =
-        cleanName;
-
+    currentPlaylist = cleanName;
 
     renderPlaylists();
 
@@ -1496,55 +810,26 @@ function() {
 };
 
 
-/* =========================
-   DELETE PLAYLIST
-========================= */
+// ===============================
+// DELETE PLAYLIST
+// ===============================
 
-document
-.getElementById("deletePlaylist")
-.onclick =
-function() {
+document.getElementById("deletePlaylist").onclick = function() {
 
+    if (currentPlaylist === "All Songs") {
 
-    if (
-        currentPlaylist ===
-        "All Songs"
-    ) {
-
-
-        alert(
-            "All Songs cannot be deleted."
-        );
-
+        alert("All Songs cannot be deleted.");
 
         return;
-
     }
 
-
-    const answer =
-        confirm(
-            "Delete playlist " +
-            currentPlaylist +
-            "?"
-        );
-
-
-    if (!answer) {
-
+    if (!confirm("Delete playlist " + currentPlaylist + "?")) {
         return;
-
     }
 
+    delete playlists[currentPlaylist];
 
-    delete playlists[
-        currentPlaylist
-    ];
-
-
-    currentPlaylist =
-        "All Songs";
-
+    currentPlaylist = "All Songs";
 
     renderPlaylists();
 
@@ -1553,140 +838,175 @@ function() {
 };
 
 
-/* =========================
-   PLAYLIST DISPLAY
-========================= */
+// ===============================
+// SHOW PLAYLISTS
+// ===============================
 
 function renderPlaylists() {
 
+    playlistsBox.innerHTML = "";
 
-    playlistsBox.innerHTML =
-        "";
+    Object.keys(playlists).forEach(name => {
 
+        const button = document.createElement("button");
 
-    Object.keys(playlists)
-    .forEach(function(name) {
+        button.className = "playlist";
 
-
-        const button =
-            document.createElement(
-                "button"
-            );
-
-
-        button.className =
-            "playlist";
-
-
-        if (
-            name ===
-            currentPlaylist
-        ) {
-
-            button.classList.add(
-                "active"
-            );
-
+        if (name === currentPlaylist) {
+            button.classList.add("active");
         }
 
+        button.textContent = name;
 
-        button.textContent =
-            name;
+        button.onclick = function() {
 
+            currentPlaylist = name;
 
-        button.onclick =
-            function() {
+            renderPlaylists();
 
+            renderSongs();
 
-                currentPlaylist =
-                    name;
+        };
 
-
-                renderPlaylists();
-
-                renderSongs();
-
-            };
-
-
-        playlistsBox.appendChild(
-            button
-        );
-
+        playlistsBox.appendChild(button);
 
     });
 
 }
 
 
-/* =========================
-   ADD TO PLAYLIST
-========================= */
+// ===============================
+// ADD SONG TO PLAYLIST
+// ===============================
 
-document
-.getElementById("addToPlaylist")
-.onclick =
-function() {
+document.getElementById("addToPlaylist").onclick = function() {
 
+    if (currentPlaylist === "All Songs") {
 
-    if (
-        currentPlaylist ===
-        "All Songs"
-    ) {
-
-
-        alert(
-            "Create a playlist first."
-        );
-
+        alert("Create a playlist first.");
 
         return;
-
     }
-
 
     if (currentIndex < 0) {
 
-
-        alert(
-            "Select a song first."
-        );
-
+        alert("Select a song first.");
 
         return;
-
     }
 
+    if (!playlists[currentPlaylist].includes(currentIndex)) {
 
-    if (
-        !playlists[currentPlaylist]
-        .includes(currentIndex)
-    ) {
-
-
-        playlists[currentPlaylist]
-        .push(currentIndex);
-
+        playlists[currentPlaylist].push(currentIndex);
 
     }
-
 
     renderSongs();
 
-
-    alert(
-        "Song added to " +
-        currentPlaylist
-    );
+    alert("Song added to " + currentPlaylist);
 
 };
 
 
-/* =========================
-   EXPORT PLAYLIST
-========================= */
+// ===============================
+// EXPORT
+// ===============================
 
-document
-.getElementById("exportBtn")
-.onclick =
-func
+document.getElementById("exportBtn").onclick = function() {
+
+    const data = JSON.stringify(playlists, null, 2);
+
+    const blob = new Blob(
+        [data],
+        { type: "application/json" }
+    );
+
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+
+    a.href = url;
+
+    a.download = "red-mp3-playlists.json";
+
+    a.click();
+
+    URL.revokeObjectURL(url);
+
+};
+
+
+// ===============================
+// IMPORT
+// ===============================
+
+document.getElementById("importInput").addEventListener(
+    "change",
+    function() {
+
+        const file = this.files[0];
+
+        if (!file) return;
+
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+
+            try {
+
+                const imported =
+                    JSON.parse(e.target.result);
+
+                if (typeof imported !== "object") {
+                    throw new Error();
+                }
+
+                Object.keys(imported).forEach(name => {
+
+                    if (!Array.isArray(imported[name])) {
+                        return;
+                    }
+
+                    playlists[name] = imported[name]
+                        .filter(index =>
+                            Number.isInteger(index) &&
+                            songs[index]
+                        );
+
+                });
+
+                currentPlaylist = "All Songs";
+
+                renderPlaylists();
+
+                renderSongs();
+
+                alert("Playlist imported successfully.");
+
+            } catch {
+
+                alert("Invalid playlist file.");
+
+            }
+
+        };
+
+        reader.readAsText(file);
+
+        this.value = "";
+
+    }
+);
+
+
+// ===============================
+// INITIAL DISPLAY
+// ===============================
+
+renderPlaylists();
+renderSongs();
+
+</script>
+
+</body>
+</html>
