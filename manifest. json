@@ -1,22 +1,27 @@
 {
   "name": "RED MP3 Player",
   "short_name": "RED MP3",
-  "description": "A red HUD-style MP3 music player",
-  "start_url": "./index.html",
+  "description": "A futuristic red-themed MP3 music player for playing and managing local music.",
+  "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "background_color": "#030303",
   "theme_color": "#ff0000",
   "orientation": "portrait",
+  "categories": [
+    "music",
+    "audio",
+    "entertainment"
+  ],
   "icons": [
     {
-      "src": "./icon-192.png",
+      "src": "icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "./icon-512.png",
+      "src": "icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
